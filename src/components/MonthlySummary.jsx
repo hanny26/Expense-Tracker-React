@@ -1,6 +1,6 @@
 // src/components/MonthlySummary.jsx
 import React from 'react';
-
+import './MonthlySummary.css'
 const MonthlySummary = ({ transactions }) => {
   const currentMonth = new Date().getMonth();
   const filteredTransactions = transactions.filter((transaction) => {
@@ -17,7 +17,7 @@ const MonthlySummary = ({ transactions }) => {
     .reduce((acc, transaction) => acc + transaction.amount, 0);
 
   return (
-    <div className="summary-container">
+    <div className="monthly-summary-container">
       <h3>Monthly Summary</h3>
       <div className="summary">
         <div className="income-summary">

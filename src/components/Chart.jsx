@@ -2,48 +2,33 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import './Chart.css';
 
-// Register Chart.js components
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const ChartComponent = ({ transactions }) => {
+const Chart = ({ transactions }) => {
+  const income = transactions.filter((item) => item.amount > 0).reduce((acc, item) => (acc += item.amount), 0);
+  const expense = transactions.filter((item) => item.amount < 0).reduce((acc, item) => (acc += Math.abs(item.amount)), 0);
+
   const data = {
     labels: ['Income', 'Expense'],
     datasets: [
       {
-        data: [transactions.reduce((acc, transaction) => transaction.type === 'income' ? acc + transaction.amount : acc, 0),
-        transactions.reduce((acc, transaction) => transaction.type === 'expense' ? acc + transaction.amount : acc, 0)],
-        backgroundColor: ['#36A2EB', '#FF6384'],
+        label: 'Income vs Expense',
+        data: [income, expense],
+        backgroundColor: ['#2ecc71', '#e74c3c'],
+        borderColor: ['#27ae60', '#c0392b'],
+        borderWidth: 1,
       },
     ],
   };
 
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      tooltip: {
-        callbacks: {
-          label: function(context) {
-            let label = context.label || '';
-            if (context.raw !== null) {
-              label += ': $' + context.raw.toFixed(2);
-            }
-            return label;
-          },
-        },
-      },
-    },
-  };
-
   return (
     <div className="chart-container">
-      <h3>Expense vs Income</h3>
-      <Pie data={data} options={options} />
+      <h3>Income vs Expense</h3>
+      <Pie data={data} />
     </div>
   );
 };
 
-export default ChartComponent;
+export default Chart;

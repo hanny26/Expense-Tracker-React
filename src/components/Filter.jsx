@@ -1,37 +1,35 @@
 // src/components/Filter.jsx
 import React, { useState } from 'react';
-
+import './Filter.css';
 const Filter = ({ onFilter }) => {
   const [text, setText] = useState('');
   const [category, setCategory] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleFilter = (e) => {
     e.preventDefault();
     onFilter({ text, category });
   };
 
   return (
-    <div>
+    <div className="filter-container">
       <h3>Filter Transactions</h3>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleFilter}>
         <div>
-          <label htmlFor="filterText">Text</label>
+          <label htmlFor="text">Text</label>
           <input
             type="text"
-            id="filterText"
+            id="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Enter text..."
           />
         </div>
         <div>
-          <label htmlFor="filterCategory">Category</label>
+          <label htmlFor="category">Category</label>
           <input
             type="text"
-            id="filterCategory"
+            id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            placeholder="Enter category..."
           />
         </div>
         <button type="submit">Filter</button>

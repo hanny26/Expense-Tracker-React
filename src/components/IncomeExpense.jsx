@@ -1,23 +1,28 @@
 // src/components/IncomeExpense.jsx
 import React from 'react';
-
+import './IncomeExpense.css';
 const IncomeExpense = ({ transactions }) => {
-  const income = transactions
-    .filter(transaction => transaction.amount > 0)
-    .reduce((acc, transaction) => acc + transaction.amount, 0);
-  const expense = transactions
-    .filter(transaction => transaction.amount < 0)
-    .reduce((acc, transaction) => acc + transaction.amount, 0);
+  const amounts = transactions.map(transaction => transaction.amount);
+
+  const income = amounts
+    .filter(item => item > 0)
+    .reduce((acc, item) => (acc += item), 0)
+    .toFixed(2);
+
+  const expense = amounts
+    .filter(item => item < 0)
+    .reduce((acc, item) => (acc += item), 0)
+    .toFixed(2);
 
   return (
-    <div>
-      <div>
+    <div className="income-expense-container">
+      <div className="income">
         <h4>Income</h4>
-        <p className="money plus">${income.toFixed(2)}</p>
+        <p className="money plus">${income}</p>
       </div>
-      <div>
+      <div className="expense">
         <h4>Expense</h4>
-        <p className="money minus">${Math.abs(expense).toFixed(2)}</p>
+        <p className="money minus">${Math.abs(expense)}</p>
       </div>
     </div>
   );

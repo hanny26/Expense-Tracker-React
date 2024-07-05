@@ -1,11 +1,13 @@
 /* src/index.css */
 
+/* General Styles */
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #f8f9fa;
   margin: 0;
   padding: 0;
   color: #333;
+  
 }
 
 .container {
@@ -294,4 +296,46 @@ button:hover {
 
 .login-container .toggle-auth:hover {
   color: #2980b9;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .container {
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  .balance-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .income-expense-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .income-expense {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .income-expense-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .income-expense {
+    margin-bottom: 10px;
+  }
+
+  .login-container {
+    margin: 50px auto;
+    padding: 10px;
+  }
 }

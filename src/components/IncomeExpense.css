@@ -1,0 +1,32 @@
+/* src/components/IncomeExpense.css */
+.income-expense-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .income-expense {
+    background: #ecf0f1;
+    padding: 15px;
+    flex: 1;
+    margin-right: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .income-expense:last-child {
+    margin-right: 0;
+  }
+  
+  .income-expense h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #2c3e50;
+  }
+  
+  .income-expense p {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  

@@ -8,15 +8,18 @@ const AddTransaction = ({ onAdd }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!text || !amount || !category) return;
-    onAdd({ text, amount: parseFloat(amount), category });
+    if (!text || !amount) {
+      alert('Please provide text and amount');
+      return;
+    }
+    onAdd({ text, amount: +amount, category, date: new Date() });
     setText('');
     setAmount('');
     setCategory('');
   };
 
   return (
-    <div>
+    <div className="add-transaction-container">
       <h3>Add New Transaction</h3>
       <form onSubmit={handleSubmit}>
         <div>
@@ -26,20 +29,17 @@ const AddTransaction = ({ onAdd }) => {
             id="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Enter text..."
+            required
           />
         </div>
         <div>
-          <label htmlFor="amount">
-            Amount <br />
-            (negative - expense, positive - income)
-          </label>
+          <label htmlFor="amount">Amount</label>
           <input
             type="number"
             id="amount"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            placeholder="Enter amount..."
+            required
           />
         </div>
         <div>
@@ -49,7 +49,6 @@ const AddTransaction = ({ onAdd }) => {
             id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            placeholder="Enter category..."
           />
         </div>
         <button type="submit">Add Transaction</button>

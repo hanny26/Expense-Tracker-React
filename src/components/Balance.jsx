@@ -1,13 +1,14 @@
 // src/components/Balance.jsx
 import React from 'react';
-
+import './Balance.css';
 const Balance = ({ transactions }) => {
-  const total = transactions.reduce((acc, transaction) => acc + transaction.amount, 0);
+  const amounts = transactions.map(transaction => transaction.amount);
+  const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
 
   return (
-    <div>
-      <h4>Your Balance</h4>
-      <h1>${total.toFixed(2)}</h1>
+    <div className="balance-container">
+      <h3>Your Balance</h3>
+      <h1>${total}</h1>
     </div>
   );
 };

@@ -1,0 +1,35 @@
+/* src/components/MonthlySummary.css */
+.monthly-summary-container {
+    background: #ecf0f1;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .monthly-summary-container h3 {
+    font-size: 18px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+  
+  .summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .income-summary,
+  .expense-summary {
+    text-align: center;
+    flex: 1;
+  }
+  
+  .income-summary {
+    margin-right: 10px;
+  }
+  
+  .expense-summary {
+    margin-left: 10px;
+  }
+  
